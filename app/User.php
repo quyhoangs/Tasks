@@ -36,4 +36,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function projects()
+    {  
+         // 1 user có nhiều project , chỉ định khóa ngoại của project tới user là owner_id
+        return $this->hasMany(Project::class,'owner_id');
+    }
 }
